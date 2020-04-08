@@ -42,6 +42,9 @@ public class NewAnimalActivity extends AppCompatActivity {
 
     public void onSave(View view) {
         String animalName = tvAnimalName.getText().toString().trim();
+        if (animalName.length() == 0 || foodSpinner.getSelectedItem() == null)
+            return;
+        
         Food selectedFood = (Food) foodSpinner.getSelectedItem();
         Animal animal = new Animal(animalName, selectedFood.foodId);
         viewModel.insertAnimal(animal);
